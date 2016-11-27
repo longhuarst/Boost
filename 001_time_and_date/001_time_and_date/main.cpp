@@ -15,6 +15,8 @@ int main(int argc, char *argv[])
 	
 	//输出已经流逝的时间
 	cout << "now time elapsed:" << t.elapsed() << "s" << endl;
+
+	
 	
 
 	system("pause");
