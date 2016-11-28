@@ -24,6 +24,10 @@ int main(int argc, char *argv[])
 	}
 
 	system("pause");
+
+	boost::mutex mu2;
+	boost::mutex::scoped_lock lock(mu2);
+	cout << "some operations" << endl;
 	
 	return 0;
 }
