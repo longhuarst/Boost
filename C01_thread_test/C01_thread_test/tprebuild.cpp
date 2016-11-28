@@ -1,6 +1,8 @@
 //tprebuild.cpp
 #define BOOST_DATE_TIME_SOURCE	//thread库需要使用date_time库
 #define BOOST_THREAD_NO_LIB
+#define BOOST_HAS_WINTHREADS
+#define BOOST_THREAD_BUILD_DLL
 #include <boost/thread.hpp>
 
 #ifdef _MSC_VER	//windows 系统的线程
