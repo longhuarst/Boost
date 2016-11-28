@@ -10,15 +10,15 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 
-	boost::mutex mu;
+	boost::mutex mu; //申明一个互斥量对象
 
 	try
 	{
-		mu.lock();
-		cout << "some operations" << endl;
-		mu.unlock();
+		mu.lock(); //锁定互斥量
+		cout << "some operations" << endl; //临界区操作
+		mu.unlock(); //解锁互斥量
 	}
-	catch (...)
+	catch (...) //必须使用try-catch块保证解锁互斥量
 	{
 		mu.unlock();
 	}
@@ -26,8 +26,10 @@ int main(int argc, char *argv[])
 	system("pause");
 
 	boost::mutex mu2;
-	boost::mutex::scoped_lock lock(mu2);
+	boost::mutex::scoped_lock lock(mu2); //使用RAII型的lock_guard
 	cout << "some operations" << endl;
+
+	system("pause");
 	
 	return 0;
 }
