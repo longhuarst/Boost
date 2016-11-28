@@ -11,17 +11,17 @@ namespace boost {
 	class basic_atom :noncopyable
 	{
 	public:
-		basic_atom(T x = T()) :n(x) {}
-		T operator++()
+		basic_atom(T x = T()) :n(x) {} //构造函数
+		T operator++() //前置式递增操作符
 		{
-			mutex_t::scoped_lock lock(mu);
+			mutex_t::scoped_lock lock(mu); //锁定互斥量
 			return ++n;
 		}
-		operator T() { return n; }
+		operator T() { return n; } //类型转换操作符定义
 	protected:
 	private:
 		T n;
-		typedef mutex mutex_t;
+		typedef mutex mutex_t; //互斥量定义
 		mutex_t mu;
 	};
 }
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 
 	system("pause");
 
-	typdef boost::basic_atom<int> atom_int;
+	typedef boost::basic_atom<int> atom_int;
 	atom_int x;
 	cout << ++x;
 	system("pause");
