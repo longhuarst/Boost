@@ -53,6 +53,15 @@ int main(int argc, char *argv[])
 	system("pause");
 
 
+	boost::thread t1(printing, boost::ref(x), "hello"); //向函数传递多个参数
+	boost::thread t2(printing, boost::ref(x), "boost"); //使用ref库传递引用
+	boost::thread t3(printing, boost::ref(x), "good");
+
+	t1.timed_join(boost::posix_time::seconds(1)); //最多等待1秒后返回
+	t2.join(); //等待t2线程结束再返回，不管执行多少时间
+	t3.join();
+
+	system("pause");
 
 
 	return 0;
