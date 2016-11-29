@@ -86,7 +86,24 @@ int main(int argc, char *argv[])
 
 	boost::thread::sleep(boost::get_system_time() + boost::posix_time::seconds(1));
 	cout << "cpu core = " << boost::thread::hardware_concurrency() << endl;
+
 	system("pause");
+
+
+	boost::this_thread::sleep(boost::posix_time::seconds(1)); //当前线程睡眠1秒
+	cout << "thread id = " << boost::this_thread::get_id() << endl; //输出当前线程的ID
+	boost::this_thread::yield(); //当前线程放弃时间片
+
+	system("pause");
+
+
+
+
+
+
+
+
+
 	return 0;
 }
 
