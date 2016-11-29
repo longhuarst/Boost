@@ -78,6 +78,38 @@ void to_interrupt2(atom_int & x, const string str)
 
 }
 
+void to_interrupt3(atom_int & x, const string str)
+{
+
+	
+	try
+	{
+		assert(boost::this_thread::interruption_enabled()); //此时允许中断
+
+		for (int i = 0; i < 5; ++i) {
+			boost::this_thread::disable_interruption di; //关闭中断
+			assert(!boost::this_thread::interruption_enabled()); //此时中断不可用
+			boost::mutex::scoped_lock lock(mu_io); //锁定 io 流操作
+			cout << str << ++x << endl;
+			cout << boost::this_thread::interruption_requested() << endl;
+			boost::this_thread::interruption_point(); //中断点被禁用
+
+			boost::this_thread::restore_interruption ri(di); //临时恢复中断
+			assert(boost::this_thread::interruption_enabled()); //此时中断可用
+			cout << "can interrupted" << endl;
+			cout << boost::this_thread::interruption_requested() << endl;
+			boost::this_thread::interruption_point(); //中断点
+		}
+		assert(boost::this_thread::interruption_enabled()); //此时允许中断
+	}
+
+	catch (boost::thread_interrupted&) //捕获中断异常
+	{
+		cout << "thread_interrupted" << endl; //显示消息
+	}
+
+
+}
 
 int main(int argc, char *argv[])
 {
@@ -153,7 +185,13 @@ int main(int argc, char *argv[])
 
 	system("pause");
 
+	boost::thread t10(boost::bind(to_interrupt3, boost::ref(x1), "hello"));
+	t10.interrupt();
+	t10.join();
 
+
+
+	system("pause");
 
 	return 0;
 }
