@@ -193,6 +193,17 @@ int main(int argc, char *argv[])
 
 	system("pause");
 
+
+
+	boost::thread_group tg;
+	atom_int x2;
+	tg.create_thread(boost::bind(printing, boost::ref(x2), "c++"));
+	tg.create_thread(boost::bind(printing, boost::ref(x2), "boost"));
+	tg.join_all();
+
+	system("pause");
+
+
 	return 0;
 }
 
