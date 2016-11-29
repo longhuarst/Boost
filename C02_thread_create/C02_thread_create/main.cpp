@@ -1,5 +1,8 @@
 #include <boost/thread.hpp>
 #include <iostream>
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
+
 
 
 using namespace std;
@@ -63,7 +66,16 @@ int main(int argc, char *argv[])
 
 	system("pause");
 
+	boost::thread t4(boost::bind(printing, boost::ref(x), "hello")); //bind表达式
+	
+	boost::function<void()> f1 = boost::bind(printing, boost::ref(x), "boost");
 
+	boost::thread t5  = boost::thread(f1); //使用boost表达式
+
+
+	system("pause");
+
+	
 	return 0;
 }
 
