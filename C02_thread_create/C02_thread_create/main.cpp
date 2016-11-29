@@ -75,7 +75,15 @@ int main(int argc, char *argv[])
 
 	system("pause");
 
-	
+	boost::thread t6(boost::bind(printing, boost::ref(x), "hello")); //创建两个线程对象
+	boost::thread t7(boost::bind(printing, boost:ref(x), "boost"));
+	cout << "t6 id = " << t6.get_id() << endl; //输出t6的id
+	assert(t6 != t7); //比较两个线程对象
+	t6.detach(); //分离t6代表的线程执行体,单线程仍然继续运行
+	assert(t6.get_id() == boost::thread::id());//t6不再标志任何线程
+
+	system("pause");
+
 	return 0;
 }
 
