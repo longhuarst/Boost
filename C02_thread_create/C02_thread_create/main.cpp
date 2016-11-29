@@ -59,6 +59,25 @@ void to_interrupt(atom_int & x, const string str)
 	
 }
 
+void to_interrupt2(atom_int & x, const string str)
+{
+	try
+	{
+		for (int i = 0; i < 5; ++i) {
+			//boost::this_thread::sleep(boost::posix_time::seconds(1)); //睡眠 1 秒
+			boost::mutex::scoped_lock lock(mu_io); //锁定 io 流操作
+			boost::this_thread::interruption_point(); //这里允许中断
+			cout << str << ++x << endl;
+		}
+	}
+	catch (boost::thread_interrupted&) //捕获中断异常
+	{
+		cout << "thread_interrupted" << endl; //显示消息
+	}
+
+
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -121,6 +140,14 @@ int main(int argc, char *argv[])
 	boost::this_thread::sleep(boost::posix_time::seconds(1));
 	t8.interrupt();
 	t8.join();
+
+
+
+	system("pause");
+
+	boost::thread t9(boost::bind(to_interrupt2, boost::ref(x1), "hello"));
+	t9.interrupt();
+	t9.join();
 
 
 
