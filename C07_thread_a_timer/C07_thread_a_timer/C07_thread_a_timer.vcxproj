@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DB16276F-98B7-4B2C-A3C6-5A7D85698584}</ProjectGuid>
+    <ProjectGuid>{57C47D4D-644E-4CA2-834E-84E37E7B3573}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>C06_thread_deadline_time</RootNamespace>
+    <RootNamespace>C07_thread_a_timer</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
