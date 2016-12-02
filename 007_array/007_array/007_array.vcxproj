@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1C36C7BC-CD85-45CF-A0D4-4945E11978AF}</ProjectGuid>
+    <ProjectGuid>{ADEC84FF-FE03-4D23-8D3B-0D3C0A687DE5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>C09_thread_asio_sync_tcp_client</RootNamespace>
+    <RootNamespace>My007_array</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -71,8 +71,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>I:\setup\boost\boost_1_62_0;$(IncludePath)</IncludePath>
-    <LibraryPath>I:\setup\boost\boost_1_62_0\install-libs\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -148,8 +146,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="tprebuild.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

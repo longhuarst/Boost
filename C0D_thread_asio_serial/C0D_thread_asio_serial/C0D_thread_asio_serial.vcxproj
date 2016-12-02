@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1C36C7BC-CD85-45CF-A0D4-4945E11978AF}</ProjectGuid>
+    <ProjectGuid>{3E62BFB2-B65D-4134-902B-616F7F60C74F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>C09_thread_asio_sync_tcp_client</RootNamespace>
+    <RootNamespace>C0D_thread_asio_serial</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
